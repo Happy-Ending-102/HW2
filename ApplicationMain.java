@@ -79,6 +79,7 @@ public class ApplicationMain {
                     playerChoice = sc.nextInt();
 
                     // TODO: make sure the given index is correct, should be 0 <= index <= 14
+                    throw new UnsupportedOperationException("Task assigned to: esra");
 
                     game.discardTile(playerChoice);
                     game.passTurnToNextPlayer();

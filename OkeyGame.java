@@ -33,7 +33,7 @@ public class OkeyGame {
      * this method assumes the tiles are already shuffled
      */
     public void distributeTilesToPlayers() {
-
+        throw new UnsupportedOperationException("Task assigned to: zeynep");
     }
 
     /*
@@ -42,7 +42,7 @@ public class OkeyGame {
      * it should return the toString method of the tile so that we can print what we picked
      */
     public String getLastDiscardedTile() {
-        return null;
+        throw new UnsupportedOperationException("Task assigned to: sude");
     }
 
     /*
@@ -51,14 +51,14 @@ public class OkeyGame {
      * it should return the toString method of the tile so that we can print what we picked
      */
     public String getTopTile() {
-        return null;
+        throw new UnsupportedOperationException("Task assigned to: semih");
     }
 
     /*
      * TODO: should randomly shuffle the tiles array before game starts
      */
     public void shuffleTiles() {
-
+        throw new UnsupportedOperationException("Task assigned to: esra");
     }
 
     /*
@@ -66,7 +66,7 @@ public class OkeyGame {
      * finished the game, use isWinningHand() method of Player to decide
      */
     public boolean didGameFinish() {
-        return false;
+        throw new UnsupportedOperationException("Task assigned to: bilgekagan");
     }
 
     /*
@@ -77,7 +77,7 @@ public class OkeyGame {
      * the current status. Print whether computer picks from tiles or discarded ones.
      */
     public void pickTileForComputer() {
-
+        throw new UnsupportedOperationException("Task assigned to: zeynep");
     }
 
     /*
@@ -87,7 +87,7 @@ public class OkeyGame {
      * the single tiles and tiles that contribute to the smallest chains.
      */
     public void discardTileForComputer() {
-
+        throw new UnsupportedOperationException("Task assigned to: sude");
     }
 
     /*
@@ -96,7 +96,7 @@ public class OkeyGame {
      * that player's tiles
      */
     public void discardTile(int tileIndex) {
-
+        throw new UnsupportedOperationException("Task assigned to: semih");
     }
 
     public void displayDiscardInformation() {

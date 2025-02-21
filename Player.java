@@ -13,7 +13,7 @@ public class Player {
      * TODO: removes and returns the tile in given index
      */
     public Tile getAndRemoveTile(int index) {
-        return null;
+        throw new UnsupportedOperationException("Task assigned to: semih");
     }
 
     /*
@@ -22,7 +22,7 @@ public class Player {
      * make sure playerTiles are not more than 15 at any time
      */
     public void addTile(Tile t) {
-
+        throw new UnsupportedOperationException("Task assigned to: esra");
     }
 
     /*
@@ -32,7 +32,7 @@ public class Player {
      * @return
      */
     public boolean isWinningHand() {
-        return false;
+        throw new UnsupportedOperationException("Task assigned to: bilgekagan");
     }
 
     public int findPositionOfTile(Tile t) {
