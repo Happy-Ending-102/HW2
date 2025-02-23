@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class OkeyGame {
 
     Player[] players;
@@ -51,7 +53,10 @@ public class OkeyGame {
      * it should return the toString method of the tile so that we can print what we picked
      */
     public String getTopTile() {
-        throw new UnsupportedOperationException("Task assigned to: semih");
+        Tile topTile = tiles[tiles.length - 1];
+        players[currentPlayerIndex].addTile(topTile);
+        tiles = Arrays.copyOf(tiles, tiles.length - 1);
+        return topTile.toString();
     }
 
     /*
@@ -96,7 +101,8 @@ public class OkeyGame {
      * that player's tiles
      */
     public void discardTile(int tileIndex) {
-        throw new UnsupportedOperationException("Task assigned to: semih");
+        Tile discardedTile = players[currentPlayerIndex].getAndRemoveTile(tileIndex);
+        lastDiscardedTile = discardedTile;
     }
 
     public void displayDiscardInformation() {

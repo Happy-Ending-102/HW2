@@ -13,7 +13,19 @@ public class Player {
      * TODO: removes and returns the tile in given index
      */
     public Tile getAndRemoveTile(int index) {
-        throw new UnsupportedOperationException("Task assigned to: semih");
+        Tile removedTile = playerTiles[index];
+        Tile[] newPlayerTiles = new Tile[numberOfTiles - 1];
+        for (int i = 0; i < numberOfTiles; i++) {
+            if (i < index) {
+                newPlayerTiles[i] = playerTiles[i];
+            } 
+            else if (i > index) {
+                newPlayerTiles[i - 1] = playerTiles[i];
+            }
+        }
+        playerTiles = newPlayerTiles;
+        numberOfTiles--;
+        return removedTile;
     }
 
     /*
