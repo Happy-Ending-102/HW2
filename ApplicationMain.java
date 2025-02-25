@@ -9,6 +9,8 @@ does not require any input from the user and the computer players will take turn
 their hands and actions until the game ends. The user should be able to choose this option
 or the regular game at the beginning of the application.
          */
+
+        throw new UnsupportedOperationException("Task assigned to: zeynep");
         Scanner sc = new Scanner(System.in);
         OkeyGame game = new OkeyGame();
 
