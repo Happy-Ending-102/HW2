@@ -45,7 +45,23 @@ public class Player {
      * @return
      */
     public boolean isWinningHand() {
-        throw new UnsupportedOperationException("Task assigned to: bilgekagan");
+        int winingCondition = 0;
+        int count = 0;
+        for(int i = 0; i + 1 < this.numberOfTiles; i++){
+            if(this.playerTiles[i].getValue() == this.playerTiles[i+1].getValue()){
+                if(this.playerTiles[i].getColor() != this.playerTiles[i+1].getColor()){
+                    count++;
+                }
+            }
+            else{
+                if(count == 3){
+                    winingCondition++;
+                }
+                count = 0;
+            }
+        }
+        
+        return winingCondition == 3;
     }
 
     public int findPositionOfTile(Tile t) {
