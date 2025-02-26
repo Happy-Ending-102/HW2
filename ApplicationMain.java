@@ -5,17 +5,36 @@ public class ApplicationMain {
     public static void main(String[] args) {
         /*
          * TODO You should also include an option for having 4 computer players: In this case, the game
-does not require any input from the user and the computer players will take turns printing
-their hands and actions until the game ends. The user should be able to choose this option
-or the regular game at the beginning of the application.
+            does not require any input from the user and the computer players will take turns printing
+            their hands and actions until the game ends. The user should be able to choose this option
+            or the regular game at the beginning of the application.
          */
 
-        throw new UnsupportedOperationException("Task assigned to: zeynep");
+        boolean isRealPlayer = true; // to slience compiler
         Scanner sc = new Scanner(System.in);
         OkeyGame game = new OkeyGame();
 
-        System.out.print("Please enter your name: ");
-        String playerName = sc.next();
+        System.out.print("Do you want to play game? Otherwise, only computers will play.\n1. Yes \n2. No \nChoice: ");
+        int choice = sc.nextInt(); sc.nextLine();
+        switch(choice){
+            case 1:
+            isRealPlayer = true;
+                break;
+            case 2:
+            isRealPlayer = false;
+                break;
+        }
+
+        String playerName;
+
+        if(isRealPlayer){
+            System.out.print("Please enter your name: ");
+            playerName = sc.next();
+        }
+        else{
+            playerName = "Jack";
+        }
+
 
         game.setPlayerName(0, playerName);
         game.setPlayerName(1, "John");
@@ -27,9 +46,15 @@ or the regular game at the beginning of the application.
         game.distributeTilesToPlayers();
 
         // developer mode is used for seeing the computer players hands, to be used for debugging
-        System.out.print("Play in developer's mode with other player's tiles visible? (Y/N): ");
-        char devMode = sc.next().charAt(0);
-        boolean devModeOn = devMode == 'Y';
+        boolean devModeOn;
+        if(isRealPlayer){
+            System.out.print("Play in developer's mode with other player's tiles visible? (Y/N): ");
+            char devMode = sc.next().charAt(0);
+            devModeOn = devMode == 'Y';
+        }
+        else{
+            devModeOn = true;
+        }
         
         boolean firstTurn = true;
         boolean gameContinues = true;
@@ -40,7 +65,7 @@ or the regular game at the beginning of the application.
             int currentPlayer = game.getCurrentPlayerIndex();
             System.out.println(game.getCurrentPlayerName() + "'s turn.");
             
-            if(currentPlayer == 0) {
+            if(isRealPlayer && currentPlayer == 0) {
                 // this is the human player's turn
                 game.displayCurrentPlayersTiles();
                 game.displayDiscardInformation();
@@ -103,8 +128,13 @@ or the regular game at the beginning of the application.
                     game.displayCurrentPlayersTiles();
                 }
 
-                // computer picks a tile from tile stack or other player's discard
-                game.pickTileForComputer();
+                if(!firstTurn){
+                    // computer picks a tile from tile stack or other player's discard
+                    game.pickTileForComputer();
+                }
+                else{
+                    firstTurn = false;
+                }
 
                 gameContinues = !game.didGameFinish();
 
