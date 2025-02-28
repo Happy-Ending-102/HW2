@@ -35,7 +35,22 @@ public class Player {
      */
     // You should make the add tile method of the player to insert new tiles in order so that each player’s hand is always sorted without using a sorting algorithm.
     public void addTile(Tile t) {
-        throw new UnsupportedOperationException("Task assigned to: esra");
+        if(numberOfTiles>=15){
+            System.out.println("You can't have more than 15 tiles");
+            return;
+        }
+        else{
+            int i;
+            for(i=numberOfTiles-1;i>0;i--){
+                if(playerTiles[i].compareTo(t)<=0){
+                    break;
+                }
+                playerTiles[i+1]=playerTiles[i];
+            }
+
+            playerTiles[i+1]=t;
+            numberOfTiles++;
+        }
     }
 
     /*
