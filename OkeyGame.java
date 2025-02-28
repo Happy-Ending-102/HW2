@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 
 public class OkeyGame {
 
@@ -63,8 +65,15 @@ public class OkeyGame {
      * TODO: should randomly shuffle the tiles array before game starts
      */
     public void shuffleTiles() {
-        throw new UnsupportedOperationException("Task assigned to: esra");
+        Random random = new Random();
+        for (int i = 111; i > 0; i--) {  
+            int index = random.nextInt(i + 1); 
+            Tile temp = tiles[i]; 
+            tiles[i] = tiles[index];
+            tiles[index] = temp;
+        }
     }
+    
 
     /*
      * TODO: check if game still continues, should return true if current player
