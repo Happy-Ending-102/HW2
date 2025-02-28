@@ -3,14 +3,8 @@ import java.util.Scanner;
 public class ApplicationMain {
 
     public static void main(String[] args) {
-        /*
-         * TODO You should also include an option for having 4 computer players: In this case, the game
-            does not require any input from the user and the computer players will take turns printing
-            their hands and actions until the game ends. The user should be able to choose this option
-            or the regular game at the beginning of the application.
-         */
 
-        boolean isRealPlayer = true; // to slience compiler
+        boolean isRealPlayer = true; // to silence compiler
         Scanner sc = new Scanner(System.in);
         OkeyGame game = new OkeyGame();
 
