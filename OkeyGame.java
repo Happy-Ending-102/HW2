@@ -37,7 +37,16 @@ public class OkeyGame {
      * this method assumes the tiles are already shuffled
      */
     public void distributeTilesToPlayers() {
-        throw new UnsupportedOperationException("Task assigned to: zeynep");
+        for(int j=0; j<14; j++)
+        {
+            for(int i =0; i <4 ; i++)
+            {
+                players[i].addTile(tiles[tiles.length -1]);
+                tiles = Arrays.copyOf(tiles, tiles.length - 1);
+            }
+        }
+        players[0].addTile(tiles[tiles.length-1]);
+        tiles = Arrays.copyOf(tiles, tiles.length - 1);
     }
 
     /*
@@ -92,6 +101,7 @@ public class OkeyGame {
      */
     public void pickTileForComputer() {
         throw new UnsupportedOperationException("Task assigned to: zeynep");
+
     }
 
     /*
