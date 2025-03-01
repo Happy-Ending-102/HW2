@@ -41,7 +41,7 @@ public class Player {
         }
         else{
             int i;
-            for(i=numberOfTiles-1;i>0;i--){
+            for(i=numberOfTiles-1;i>=0;i--){
                 if(playerTiles[i].compareTo(t)<=0){
                     break;
                 }
