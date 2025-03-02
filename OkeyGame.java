@@ -101,8 +101,20 @@ public class OkeyGame {
      * the current status. Print whether computer picks from tiles or discarded ones.
      */
     public void pickTileForComputer() {
-        throw new UnsupportedOperationException("Task assigned to: zeynep");
-
+        int triosBeforeTheNewTile = this.players[currentPlayerIndex].findTheNumberOfTrios();
+        this.players[currentPlayerIndex].addTile(lastDiscardedTile);
+        int triosAfterTheNewTile = this.players[currentPlayerIndex].findTheNumberOfTrios();
+        if(triosBeforeTheNewTile >= triosAfterTheNewTile)
+        {
+            int indexToRemove= this.players[currentPlayerIndex].findPositionOfTile(lastDiscardedTile);
+            this.players[currentPlayerIndex].getAndRemoveTile(indexToRemove);
+            getTopTile();
+            System.out.println("A tile is picked from tiles");
+        }
+        else
+        {
+            System.out.println("Last discarded tile is picked.");
+        }
     }
 
     /* 

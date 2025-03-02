@@ -29,24 +29,19 @@ public class Player {
      */
     // You should make the add tile method of the player to insert new tiles in order so that each player’s hand is always sorted without using a sorting algorithm.
     public void addTile(Tile t) {
-        if(numberOfTiles>=15){
+        if(numberOfTiles>=playerTiles.length){
             System.out.println("You can't have more than 15 tiles");
             return;
         }
-        else{
-            int i;
-            for(i=numberOfTiles-1;i>=0;i--){
-                if(playerTiles[i].compareTo(t)<=0){
-                    break;
-                }
-                playerTiles[i+1]=playerTiles[i];
-            }
+        int i;
 
-            playerTiles[i+1]=t;
-            numberOfTiles++;
+        for(i=numberOfTiles-1;i>=0&&playerTiles[i].compareTo(t)>0;i--){
+            playerTiles[i+1]=playerTiles[i];
         }
-    }
 
+        playerTiles[i+1]=t;
+        numberOfTiles ++;
+    }
     /*
      * TODO: checks if this player's hand satisfies the winning condition
      * to win this player should have 3 chains of length 4, extra tiles
@@ -71,6 +66,28 @@ public class Player {
         }
         
         return winingCondition == 3;
+    }
+
+    /*
+     * this method returns the number of series more than 2 in playerTiles
+     */
+    public int findTheNumberOfTrios(){
+        int numberOfTrios = 0;
+        int count = 0;
+        for(int i = 0; i + 1 < this.numberOfTiles; i++){
+            if(this.playerTiles[i].getValue() == this.playerTiles[i+1].getValue()){
+                if(this.playerTiles[i].getColor() != this.playerTiles[i+1].getColor()){
+                    count++;
+                }
+            }
+            else{
+                if(count >= 2){
+                    numberOfTrios++;
+                }
+                count = 0;
+            }
+        }
+        return numberOfTrios;
     }
 
     public int findPositionOfTile(Tile t) {
