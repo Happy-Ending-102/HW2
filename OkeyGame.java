@@ -118,7 +118,7 @@ public class OkeyGame {
         outerLoop:
         for(int i = 0; i<players[currentPlayerIndex].getTiles().length; i++){
             for(int j = 0; j<players[currentPlayerIndex].getTiles().length; j++){
-                if(i != j && players[currentPlayerIndex].getTiles()[i].compareTo(players[currentPlayerIndex].getTiles()[j] == 0)){
+                if(i != j && players[currentPlayerIndex].getTiles()[i].compareTo(players[currentPlayerIndex].getTiles()[j]) == 0){
                     discardedTileIndex = j;
                     break outerLoop;
                 }
