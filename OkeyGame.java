@@ -49,13 +49,14 @@ public class OkeyGame {
         tiles = Arrays.copyOf(tiles, tiles.length - 1);
     }
 
-    /*
+    /* 
      * TODO: get the last discarded tile for the current player
      * (this simulates picking up the tile discarded by the previous player)
      * it should return the toString method of the tile so that we can print what we picked
      */
     public String getLastDiscardedTile() {
-        throw new UnsupportedOperationException("Task assigned to: sude");
+        players[currentPlayerIndex].addTile(lastDiscardedTile);
+        return lastDiscardedTile.toString();
     }
 
     /*
@@ -104,14 +105,65 @@ public class OkeyGame {
 
     }
 
-    /*
+    /* 
      * TODO: Current computer player will discard the least useful tile.
      * this method should print what tile is discarded since it should be
      * known by other players. You may first discard duplicates and then
      * the single tiles and tiles that contribute to the smallest chains.
      */
     public void discardTileForComputer() {
-        throw new UnsupportedOperationException("Task assigned to: sude");
+        int discardedTileIndex = -1;
+        Tile discardedTile = null;
+        Tile[] playerTiles = players[currentPlayerIndex].getTiles();
+        outerLoop:
+        for(int i = 0; i<players[currentPlayerIndex].getTiles().length; i++){
+            for(int j = 0; j<players[currentPlayerIndex].getTiles().length; j++){
+                if(i != j && players[currentPlayerIndex].getTiles()[i].compareTo(players[currentPlayerIndex].getTiles()[j] == 0)){
+                    discardedTileIndex = j;
+                    break outerLoop;
+                }
+            }
+        }
+
+        if(discardedTileIndex == -1){
+            if(!(playerTiles[0].canFormChainWith(playerTiles[1]))){
+                discardedTileIndex = 0;
+                break;
+            }
+            else if(!(playerTiles[playerTiles.length-1].canFormChainWith(playerTiles[playerTiles.length-2]))){
+                discardedTileIndex = playerTiles.length-1;
+                break;
+            }
+            else{
+                for(int i = 1; i<playerTiles.length; i++){
+                    if(!(playerTiles[i].canFormChainWith(playerTiles[i-1])&& playerTiles[i].canFormChainWith(playerTiles[i+1]))){
+                        discardedTileIndex = i;
+                    }
+                }
+            }
+        }
+
+        if(discardedTileIndex == -1){
+            int minChainLength = 15;
+            int chainLength = 0;
+            for(int i = 0; i<playerTiles.length-1; i++){
+                if(playerTiles[i].canFormChainWith(playerTiles[i+1])){
+                    chainLength++;
+                }
+                else{
+                    if(chainLength < minChainLength){
+                        minChainLength = chainLength;
+                        discardedTileIndex = i;
+                        chainLength = 0;
+                    }
+                }
+            }
+        }
+
+        discardedTile = players[currentPlayerIndex].getAndRemoveTile(discardedTileIndex);
+        lastDiscardedTile = discardedTile;
+        displayDiscardInformation();
+        
     }
 
     /*
