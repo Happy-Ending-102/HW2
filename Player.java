@@ -14,16 +14,10 @@ public class Player {
      */
     public Tile getAndRemoveTile(int index) {
         Tile removedTile = playerTiles[index];
-        Tile[] newPlayerTiles = new Tile[numberOfTiles - 1];
-        for (int i = 0; i < numberOfTiles; i++) {
-            if (i < index) {
-                newPlayerTiles[i] = playerTiles[i];
-            } 
-            else if (i > index) {
-                newPlayerTiles[i - 1] = playerTiles[i];
-            }
+        for(int i = index; i < numberOfTiles - 1; i++) {
+            playerTiles[i] = playerTiles[i + 1];
         }
-        playerTiles = newPlayerTiles;
+        playerTiles[numberOfTiles - 1] = null;
         numberOfTiles--;
         return removedTile;
     }
