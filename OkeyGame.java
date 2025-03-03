@@ -145,8 +145,8 @@ public class OkeyGame {
                 discardedTileIndex = playerTiles.length-1;
             }
             else{
-                for(int i = 1; i<playerTiles.length; i++){
-                    if(!(playerTiles[i].canFormChainWith(playerTiles[i-1])&& playerTiles[i].canFormChainWith(playerTiles[i+1]))){
+                for(int i = 1; i+1<playerTiles.length; i++){
+                    if(!(playerTiles[i].canFormChainWith(playerTiles[i-1]) && playerTiles[i].canFormChainWith(playerTiles[i+1]))){
                         discardedTileIndex = i;
                     }
                 }
