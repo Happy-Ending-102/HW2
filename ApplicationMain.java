@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ApplicationMain {
@@ -97,7 +98,7 @@ public class ApplicationMain {
                     firstTurn = false;
                 }
 
-                gameContinues = !game.didGameFinish();
+                gameContinues = !game.didGameFinish() && !(game.tiles.length==0);
 
                 if(gameContinues) {
                     // if game continues we need to discard a tile using the given index by the player
@@ -114,6 +115,14 @@ public class ApplicationMain {
                     
                     game.discardTile(playerChoice);
                     game.passTurnToNextPlayer();
+                }
+                else if(game.tiles.length==0)
+                {
+                    System.out.println("We don't have more tiles!");
+                    for(int i=0; i<4; i++)
+                    {
+                        System.out.println(Arrays.toString(game.players[i].getTiles()));
+                    }
                 }
                 else{
                     // if we finish the hand we win
@@ -134,12 +143,20 @@ public class ApplicationMain {
                     firstTurn = false;
                 }
 
-                gameContinues = !game.didGameFinish();
+                gameContinues = !game.didGameFinish() && !(game.tiles.length==0);
 
                 if(gameContinues) {
                     // if game did not end computer should discard
                     game.discardTileForComputer();
                     game.passTurnToNextPlayer();
+                }
+                else if(game.tiles.length==0)
+                {
+                    System.out.println("We don't have more tiles!");
+                    for(int i=0; i<4; i++)
+                    {
+                        System.out.println(Arrays.toString(game.players[i].getTiles()));
+                    }
                 }
                 else{
                     // current computer character wins

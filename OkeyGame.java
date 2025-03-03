@@ -104,7 +104,7 @@ public class OkeyGame {
         int triosBeforeTheNewTile = this.players[currentPlayerIndex].findTheNumberOfTrios();
         this.players[currentPlayerIndex].addTile(lastDiscardedTile);
         int triosAfterTheNewTile = this.players[currentPlayerIndex].findTheNumberOfTrios();
-        if(triosBeforeTheNewTile >= triosAfterTheNewTile)
+        if(triosBeforeTheNewTile == triosAfterTheNewTile)
         {
             int indexToRemove= this.players[currentPlayerIndex].findPositionOfTile(lastDiscardedTile);
             this.players[currentPlayerIndex].getAndRemoveTile(indexToRemove);

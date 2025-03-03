@@ -69,7 +69,7 @@ public class Player {
     }
 
     /*
-     * this method returns the number of series more than 2 in playerTiles
+     * this method returns the number of trios in playerTiles
      */
     public int findTheNumberOfTrios(){
         int numberOfTrios = 0;
@@ -81,7 +81,7 @@ public class Player {
                 }
             }
             else{
-                if(count >= 2){
+                if(count == 2){
                     numberOfTrios++;
                 }
                 count = 0;
